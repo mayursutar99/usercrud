@@ -1,6 +1,6 @@
 export type userType={
-    id?: number;
-    name:string;
-    age:number;
-    address:string;
+    id?: string |undefined;
+    name?:string;
+    age?:number;
+    address?:string;
 }

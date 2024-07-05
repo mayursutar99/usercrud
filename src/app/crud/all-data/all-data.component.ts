@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { userType } from 'src/app/app.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,7 +9,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AllDataComponent implements OnInit {
   dataSource: userType[]=[];
-  displayedColumns: string[] = ['id', 'name', 'age', 'address'];
+  displayedColumns: string[] = ['id', 'name', 'age', 'address', "Action"];
+  isEditOn:Boolean = false;
+  user!:userType;
   constructor(private userService:UserService){}
   ngOnInit(){
     this.loadAllData();
@@ -18,5 +20,18 @@ export class AllDataComponent implements OnInit {
     this.userService.getAllUsers().subscribe(users =>{
       this.dataSource=users;
     })
+  }
+  startEdit(element:userType){
+    this.user = {...element};
+    this.isEditOn = true;
+  }
+  cancel(){
+    this.isEditOn = false;
+    this.loadAllData();
+  }
+  deleteUser(id: string): void {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.loadAllData();
+    });
   }
 }

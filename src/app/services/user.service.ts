@@ -16,10 +16,12 @@ export class UserService {
   addUser(user:userType):Observable<userType>{
     return this.http.post<userType>(this.baseUrl,user);
   }
-  deleteUser(id:number){
-    this.http.delete(`${this.baseUrl}/${id}`);
+  deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
-  updateUser(user:userType){
-    this.http.put<userType>(`${this.baseUrl}/${user.id}`,user);
+  updateUser(id: string | undefined, user: userType): Observable<any> {
+    console.log(id,user);
+    
+    return this.http.put<userType>(`${this.baseUrl}/${id}`,user);
   }
 }

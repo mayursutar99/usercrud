@@ -5,13 +5,15 @@ import { AllDataComponent } from './all-data/all-data.component';
 import { CrudRoutingModule } from './crud-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { UpdateComponent } from './update/update.component';
 
 
 
 @NgModule({
   declarations: [
     AddUserComponent,
-    AllDataComponent
+    AllDataComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,
