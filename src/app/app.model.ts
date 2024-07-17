@@ -3,4 +3,6 @@ export type userType={
     name?:string;
     age?:number;
     address?:string;
+    states?:string;
+    city?:string;
 }

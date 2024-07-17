@@ -1,12 +1,20 @@
 <div class="container">
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <form (ngSubmit)="onSubmit()" [formGroup]="addUserFormGroup">
         <h1>Add user</h1>
         <label for="name">Name:</label>
-        <input type="text" id="name" ngModel="" name="name">
+        <input type="text" id="name" formControlName="name">
         <label for="age">Age:</label>
-        <input type="text" id="age" ngModel="" name="age">
-        <label for="address">Address:</label>
-        <input type="text" id="address" ngModel="" name="address">
+        <input type="text" id="age" formControlName="age">
+        <label for="address">streat, area:</label>
+        <input type="text" id="address"  formControlName="address">
+        <label for="address">Select State: </label>
+        <select id="states" formControlName="states" placeholder="select state" on>
+            <option *ngFor="let state of statesData" [value]="state">{{state}}</option>
+        </select>
+        <label for="address">Select City: </label>
+        <select formControlName="city" placeholder="select city">
+            <option *ngFor="let city of cityData" [value]="city.name">{{city.name}}</option>
+        </select>
         <button type="submit">Add</button>
     </form>
 </div>
